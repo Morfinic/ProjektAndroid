@@ -105,7 +105,7 @@ class MainActivity : ComponentActivity() {
                                 horizontalAlignment = Alignment.CenterHorizontally,
                                 verticalArrangement = Arrangement.Center
                             ) {
-//                                CircularProgressIndicator()
+                                CircularProgressIndicator()
                                 Text(text="Connecting...")
                             }
                         }
