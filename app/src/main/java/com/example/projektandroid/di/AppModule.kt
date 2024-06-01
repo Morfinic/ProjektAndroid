@@ -2,7 +2,7 @@ package com.example.projektandroid.di
 
 import android.content.Context
 import com.example.projektandroid.data.AndroidBluetoothController
-import com.example.projektandroid.models.BluetoothController
+import com.example.projektandroid.chat.BluetoothController
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

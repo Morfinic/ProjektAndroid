@@ -16,7 +16,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.projektandroid.models.BluetoothDevice
+import com.example.projektandroid.chat.BluetoothDevice
 import com.example.projektandroid.view.BluetoothUiState
 
 @Composable

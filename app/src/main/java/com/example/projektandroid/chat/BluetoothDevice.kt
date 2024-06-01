@@ -1,4 +1,4 @@
-package com.example.projektandroid.models
+package com.example.projektandroid.chat
 
 typealias BluetoothDeviceDomain = BluetoothDevice
 
