@@ -52,7 +52,9 @@ class BluetoothViewModel @Inject constructor(
     }
 
     fun connectToDevice(device: BluetoothDeviceDomain) {
-        _state.update { it.copy(isConnecting = true) }
+        _state.update { it.copy(
+            isConnecting = true
+        ) }
         deviceConnectionJob = bluetoothController
             .connectToDevice(device)
             .listen()
@@ -86,10 +88,16 @@ class BluetoothViewModel @Inject constructor(
     }
 
     fun startScan() {
+        _state.update { it.copy(
+            isScanning = true
+        ) }
         bluetoothController.startDiscovery()
     }
 
     fun stopScan() {
+        _state.update { it.copy(
+            isScanning = false
+        ) }
         bluetoothController.stopDiscovery()
     }
 
@@ -100,6 +108,7 @@ class BluetoothViewModel @Inject constructor(
                     _state.update { it.copy(
                         isConnected = true,
                         isConnecting = false,
+                        isScanning = false,
                         errorMessage = null
                     ) }
                 }
@@ -122,7 +131,8 @@ class BluetoothViewModel @Inject constructor(
             bluetoothController.closeConnection()
             _state.update { it.copy(
                 isConnected = false,
-                isConnecting = false
+                isConnecting = false,
+                isScanning = false
                 )
             }
         }.launchIn(viewModelScope)

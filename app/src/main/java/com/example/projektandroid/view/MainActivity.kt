@@ -25,6 +25,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.projektandroid.ui.theme.ProjektAndroidTheme
 import com.example.projektandroid.view.components.ChatScreen
 import com.example.projektandroid.view.components.DeviceScreen
+import com.example.projektandroid.view.components.ScanScreen
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -118,11 +119,17 @@ class MainActivity : ComponentActivity() {
                             )
                         }
 
+                        state.isScanning -> {
+                            ScanScreen(
+                                state = state,
+                                onDeviceClick = viewModel::connectToDevice
+                            )
+                        }
+
                         else -> {
                             DeviceScreen(
                                 state = state,
                                 onStartScan = viewModel::startScan,
-                                onStopScan = viewModel::stopScan,
                                 onDeviceClick = viewModel::connectToDevice,
                                 onStartServer = viewModel::waitForIncomingConnection
                             )

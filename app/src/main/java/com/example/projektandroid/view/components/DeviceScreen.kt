@@ -9,9 +9,13 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Face
 import androidx.compose.material3.Button
+import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -23,16 +27,31 @@ import com.example.projektandroid.view.BluetoothUiState
 fun DeviceScreen(
     state: BluetoothUiState,
     onStartScan: () -> Unit,
-    onStopScan: () -> Unit,
     onStartServer: () -> Unit,
     onDeviceClick: (BluetoothDevice) -> Unit
 ) {
     Column(
         modifier = Modifier.fillMaxSize()
     ) {
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(16.dp),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Icon(
+                imageVector = Icons.Default.Face,
+                contentDescription = "appIcon"
+            )
+            Text(
+                text = "Bt-Chat",
+                modifier = Modifier.weight(1f)
+            )
+        }
+
         BluetoothDeviceList(
             pairedDevices = state.pairedDevices,
-            scannedDevices = state.scannedDevices,
+//            scannedDevices = state.scannedDevices,
             onClick = onDeviceClick,
             modifier = Modifier
                 .fillMaxWidth()
@@ -41,18 +60,26 @@ fun DeviceScreen(
         
         Row (
             modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.SpaceAround
+            horizontalArrangement = Arrangement.SpaceEvenly
         ){
-            Button(onClick = onStartScan) {
-                Text(text = "Start scan")
+            Button(
+                onClick = onStartScan,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .weight(1f)
+                    .padding(1.dp)
+            ) {
+                Text(text = "Add device")
             }
 
-            Button(onClick = onStopScan) {
-                Text(text = "Stop scan")
-            }
-
-            Button(onClick = onStartServer) {
-                Text(text = "Start server")
+            Button(
+                onClick = onStartServer,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .weight(1f)
+                    .padding(1.dp)
+            ) {
+                Text(text = "Await chat")
             }
         }
     }
@@ -61,7 +88,7 @@ fun DeviceScreen(
 @Composable
 fun BluetoothDeviceList(
     pairedDevices: List<BluetoothDevice>,
-    scannedDevices: List<BluetoothDevice>,
+//    scannedDevices: List<BluetoothDevice>,
     onClick: (BluetoothDevice) -> Unit,
     modifier: Modifier = Modifier
 ) {
@@ -88,24 +115,24 @@ fun BluetoothDeviceList(
 
         }
 
-        item {
-            Text(
-                text = "Scanned devices",
-                fontWeight = FontWeight.Bold,
-                fontSize = 24.sp,
-                modifier = Modifier.padding(16.dp)
-            )
-        }
-
-        items(scannedDevices){ device ->
-            Text(
-                text = device.name ?: "No name",
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .clickable { onClick(device) }
-                    .padding(16.dp)
-            )
-
-        }
+//        item {
+//            Text(
+//                text = "Scanned devices",
+//                fontWeight = FontWeight.Bold,
+//                fontSize = 24.sp,
+//                modifier = Modifier.padding(16.dp)
+//            )
+//        }
+//
+//        items(scannedDevices){ device ->
+//            Text(
+//                text = device.name ?: "No name",
+//                modifier = Modifier
+//                    .fillMaxWidth()
+//                    .clickable { onClick(device) }
+//                    .padding(16.dp)
+//            )
+//
+//        }
     }
 }

@@ -113,6 +113,8 @@ class AndroidBluetoothController(private val context: Context): BluetoothControl
             return
         }
 
+        updatePairedDevices()
+
         bluetoothAdapter?.cancelDiscovery()
     }
 
@@ -227,6 +229,8 @@ class AndroidBluetoothController(private val context: Context): BluetoothControl
     }
 
     override fun closeConnection() {
+        updatePairedDevices()
+
         currentClientSocket?.close()
         currentServerSocket?.close()
 
