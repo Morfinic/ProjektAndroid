@@ -122,7 +122,8 @@ class MainActivity : ComponentActivity() {
                         state.isScanning -> {
                             ScanScreen(
                                 state = state,
-                                onDeviceClick = viewModel::connectToDevice
+                                onDeviceClick = viewModel::connectToDevice,
+                                stopScan = viewModel::stopScan
                             )
                         }
 

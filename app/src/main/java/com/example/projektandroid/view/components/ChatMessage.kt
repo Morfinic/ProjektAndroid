@@ -29,16 +29,7 @@ fun ChatMessage(
     Column(
         modifier = modifier
             .fillMaxWidth()
-//            .clip(
-//                RoundedCornerShape(
-//                    topStart = if (message.isFromLocalUser) 15.dp else 0.dp,
-//                    topEnd = 15.dp,
-//                    bottomStart = 15.dp,
-//                    bottomEnd = if (message.isFromLocalUser) 0.dp else 15.dp
-//                )
-//            )
             .background(
-//                if (message.isFromLocalUser) OldRose else Vanilla
                 Color.White
             )
             .padding(
